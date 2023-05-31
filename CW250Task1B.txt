@@ -1,0 +1,32 @@
+select count(dept), count(distinct dept), sum(sal), sum(distinct sal)
+from PROF
+
+****select count(dept), count(distinct dept), sum(sal), sum(distinct sal)
+from PROF
+
+select count(custid)
+from cust, item 
+where iname =  "Kingsmill Soft White Medium 400g"
+group by iname
+having count(custid) <= 1
+
+
+
+<td> <?php echo $row ['orderid'];?> </td>
+                            <td> <?php echo $row ['custid'];?> </td>
+                            <td> <?php echo $row ['cardnum'];?> </td>
+                            <td> <?php echo $row ['cardType'];?> </td>
+                            <td> <?php echo $row ['totalPay'];?> </td>
+
+
+Task1(Q2)
+SELECT distinct i1.orderid FROM (select orderpay.orderid,count(distinct item.iname) as count FROM orderpay, tran, item WHERE orderpay.orderid = tran.orderid AND tran.itemid = item.itemid group by orderpay.orderid) as i1 LEFT JOIN (select orderpay.orderid,count(distinct item.iname) as count FROM orderpay, tran, item WHERE orderpay.orderid = tran.orderid AND tran.itemid = item.itemid group by orderpay.orderid) as i2 ON i2.count < i1.count WHERE i2.count IS NULL; 
+                   
+
+
+Task(Q1)
+select  name orderid.orderpay, (totalpay - sum(quantity * unitprice)) as refund
+from cust,orderpay,tran,item
+where orderpay.orderid = tran.orderid and tran.itemid = item.itemid and cust.custid = orderpay.custid
+group by orderid
+having refund > 0.00;     

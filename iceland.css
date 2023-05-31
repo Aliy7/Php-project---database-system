@@ -1,0 +1,111 @@
+.header img {
+    float: center right;
+    height: 5%;
+    width: 6%;
+
+}
+
+.logo {
+    float: right;
+}
+
+.header h1 {
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+    display: inline-block;
+}
+
+.header h1 img {
+    height: 5%;
+    width: 6%;
+    position: right;
+    padding-left: 50px;
+}
+
+
+.boxes {
+    width: 50%;
+    float: left;
+
+}
+
+
+
+img {
+    max-width: -100%;
+}
+
+
+
+.paddingCols td {
+    padding: 0 40px;
+}
+
+.Orderheader td{
+    padding: 0 40px;
+}
+
+
+/**
+That controls to left column 
+makes it appear side by side
+*/
+.row {
+    margin-left:-3px;
+    margin-right:-5px;
+  }
+  .column {
+    float: left;
+    width: 61%;
+    padding: -5px;
+  }
+
+
+/*
+The  creates left vertical line
+**/
+
+.vl {
+    border-left: 2px solid black;
+    height: 1600px;
+    position: absolute;
+    left: 0.5%;
+    margin-left: -3px;
+    top: 0;
+  }
+  /*
+The  creates right vertical line
+**/
+   .v2{
+    border-left: 2px solid black;
+    height: 1600px;
+    position: absolute;
+    right: 0.5%;
+    margin-left: -2px;
+    top: 0;
+   }
+ 
+    
+/**
+to align logo in center 
+
+*/
+
+  .parent{
+    float: center;
+    gap: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5%;
+    width: 8%;
+    margin: auto;
+    float: center;
+    display:flex; 
+    }
+
+    /** creates paddin for every table*/
+    tr > * + * {
+        padding-left: 6em;
+      }

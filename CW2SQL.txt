@@ -1,0 +1,59 @@
+Task1(Q2)
+
+
+SELECT 
+  DISTINCT i1.orderid 
+FROM 
+  (
+    SELECT 
+      orderpay.orderid, 
+      Count(DISTINCT item.cat) AS count 
+    FROM 
+      orderpay, 
+      TRAN, 
+      item 
+    WHERE 
+      orderpay.orderid = TRAN.orderid 
+      AND TRAN.itemid = item.itemid 
+    GROUP BY 
+      orderpay.orderid
+  ) AS i1 
+  LEFT JOIN (
+    SELECT 
+      orderpay.orderid, 
+      Count(DISTINCT item.cat) AS count 
+    FROM 
+      orderpay, 
+      TRAN, 
+      item 
+    WHERE 
+      orderpay.orderid = TRAN.orderid 
+      AND TRAN.itemid = item.itemid 
+    GROUP BY 
+      orderpay.orderid
+  ) AS i2 ON i2.count < i1.count 
+WHERE 
+  i2.count IS NULL;
+
+
+
+Task(Q1)
+SELECT 
+  orderpay.orderid, 
+  name, 
+  (
+    totalpay - sum(quantity * unitprice)
+  ) as refund 
+FROM 
+  orderpay, 
+  tran, 
+  item, 
+  cust 
+WHERE 
+  tran.orderid = orderpay.orderid 
+  and tran.itemid = item.itemid 
+  and cust.custid = orderpay.custid 
+GROUP BY 
+  orderid 
+HAVING 
+  refund > 0.00;
